@@ -1,36 +1,16 @@
 import React, { Component } from "react";
-import ListaDeNotas from "./components/ListaDeNotas";
-import FormularioCadastro from "./components/FormularioCadastro";
-import "./assets/App.css";
-import './assets/index.css';
-class App extends Component {
-
-  constructor(){
-    super();
-
-    this.state = {
-      notas:[]
-    }
-  }
-
-  criarNota(titulo, texto){
-    const novaNota = {titulo, texto};
-    const novoArrayNotas = [...this.state.notas,novaNota]
-    const novoEstado = {
-      notas:novoArrayNotas
-    }
-    this.setState(novoEstado)
-  }
-
+import "./estilo.css";
+class CardNota extends Component {
   render() {
     return (
-      <section className="conteudo">
-        <FormularioCadastro criarNota={this.criarNota.bind(this)}/>
-        <ListaDeNotas notas={this.state.notas}/>
+      <section className="card-nota">
+        <header className="card-nota_cabecalho">
+          <h3 className="card-nota_titulo">{this.props.titulo}</h3>
+        </header>
+        <p className="card-nota_texto">{this.props.texto}</p>
       </section>
     );
   }
 }
 
-//new ListaDeNotas({notas:this.notas})
-export default App;
+export default CardNota;
